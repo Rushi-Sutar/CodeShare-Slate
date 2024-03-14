@@ -2,6 +2,8 @@ import express from "express";
 import { Server } from "socket.io";
 import { createServer } from "http";
 import Actions from "./Actions.js";
+import path from "path";
+import { dirname } from "path";
 
 // Initialize Express app
 const app = express();
@@ -10,6 +12,18 @@ const server = createServer(app);
 // Initialize Socket.IO server
 const io = new Server(server);
 // Map to store user socket connections
+const __dirname = path.resolve();
+
+// Serve static files first
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Then serve index.html for other routes
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
+
+
 const userSocketMap = {};
 
 // Function to get all connected clients in a room
