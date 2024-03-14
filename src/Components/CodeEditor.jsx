@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import CodeMirror from "codemirror";
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript";
-import "codemirror/theme/vscode-dark.css"
+import "codemirror/theme/darcula.css"
 import "codemirror/addon/edit/closebrackets";
 import "codemirror/addon/edit/closetag";
 import "codemirror/addon/hint/javascript-hint";
@@ -16,7 +16,7 @@ function CodeEditor({ socketRef, roomId, onCodeChange }) {
         document.getElementById("realtimeeditor"),
         {
           mode: "javascript",
-          theme: "vscode-dark",
+          theme: "darcula",
           autoCloseTags: true,
           autoCloseBrackets: true,
           lineNumbers: true,
